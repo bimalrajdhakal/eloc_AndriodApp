@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="place_type">
+        <item>accounting</item>
+        <item>airport</item>
+        <item>amusement_park</item>
+        <item>aquarium</item>
+        <item>art_gallery</item>
+        <item>atm</item>
+        <item>bakery</item>
+        <item>bank</item>
+        <item>bar</item>
+        <item>beauty_salon</item>
+        <item>bicycle_store</item>
+        <item>book_store</item>
+        <item>bowling_alley</item>
+        <item>bus_station</item>
+        <item>cafe</item>
+        <item>campground</item>
+        <item>car_dealer</item>
+        <item>car_rental</item>
+        <item>car_repair</item>
+        <item>car_wash</item>
+        <item>casino</item>
+        <item>cemetery</item>
+        <item>church</item>
+        <item>city_hall</item>
+        <item>clothing_store</item>
+        <item>convenience_store</item>
+        <item>courthouse</item>
+        <item>dentist</item>
+        <item>department_store</item>
+        <item>doctor</item>
+        <item>electrician</item>
+        <item>electronics_store</item>
+        <item>embassy</item>
+        <item>establishment</item>
+        <item>finance</item>
+        <item>fire_station</item>
+        <item>florist</item>
+        <item>food</item>
+        <item>funeral_home</item>
+        <item>furniture_store</item>
+        <item>gas_station</item>
+        <item>general_contractor</item>
+        <item>grocery_or_supermarket</item>
+        <item>gym</item>
+        <item>hair_care</item>
+        <item>hardware_store</item>
+        <item>health</item>
+        <item>hindu_temple</item>
+        <item>home_goods_store</item>
+        <item>hospital</item>
+        <item>insurance_agency</item>
+        <item>jewelry_store</item>
+        <item>laundry</item>
+        <item>lawyer</item>
+        <item>library</item>
+        <item>liquor_store</item>
+        <item>local_government_office</item>
+        <item>locksmith</item>
+        <item>lodging</item>
+        <item>meal_delivery</item>
+        <item>meal_takeaway</item>
+        <item>mosque</item>
+        <item>movie_rental</item>
+        <item>movie_theater</item>
+        <item>moving_company</item>
+        <item>museum</item>
+        <item>night_club</item>
+        <item>painter</item>
+        <item>park</item>
+        <item>parking</item>
+        <item>pet_store</item>
+        <item>pharmacy</item>
+        <item>physiotherapist</item>
+        <item>place_of_worship</item>
+        <item>plumber</item>
+        <item>police</item>
+        <item>post_office</item>
+        <item>real_estate_agency</item>
+        <item>restaurant</item>
+        <item>roofing_contractor</item>
+        <item>rv_park</item>
+        <item>school</item>
+        <item>shoe_store</item>
+        <item>shopping_mall</item>
+        <item>spa</item>
+        <item>stadium</item>
+        <item>storage</item>
+        <item>store</item>
+        <item>subway_station</item>
+        <item>synagogue</item>
+        <item>taxi_stand</item>
+        <item>train_station</item>
+        <item>travel_agency</item>
+        <item>university</item>
+        <item>veterinary_care</item>
+        <item>zoo</item>
+    </array>
+    <array name="place_type_name">
+        <item>ACCOUNTING</item>
+        <item>AIRPORT</item>
+        <item>AMUSEMENT PARK</item>
+        <item>AQUARIUM</item>
+        <item>ART GALLERY</item>
+        <item>ATM</item>
+        <item>BAKERY</item>
+        <item>BANK</item>
+        <item>BAR</item>
+        <item>BEAUTY SALON</item>
+        <item>BICYCLE STORE</item>
+        <item>BOOK STORE</item>
+        <item>BOWLING STORE</item>
+        <item>BUS STATION</item>
+        <item>CAFE</item>
+        <item>CAMPGROUND</item>
+        <item>CAR DEALER</item>
+        <item>CAR RENTAL</item>
+        <item>CAR REPAIR</item>
+        <item>CAR WASH</item>
+        <item>CASINO</item>
+        <item>CEMETRY</item>
+        <item>CHURCH</item>
+        <item>CITY HALL</item>
+        <item>CLOTHING STORE</item>
+        <item>CONVENIENCE STORE</item>
+        <item>COURT HOUSE</item>
+        <item>DENTIST</item>
+        <item>DEPARTMENT STORE</item>
+        <item>DOCTOR</item>
+        <item>ELECTRICIAN</item>
+        <item>ELECTRONICS STORE</item>
+        <item>EMBASSY</item>
+        <item>ESTABLISHMENT</item>
+        <item>FINANCE</item>
+        <item>FIRE STATION</item>
+        <item>FLORIST</item>
+        <item>FOOD</item>
+        <item>FUNERAL HOME</item>
+        <item>FURNITURE STORE</item>
+        <item>PETROL PUMP</item>
+        <item>GENERAL CONTRACTOR</item>
+        <item>GROCERY</item>
+        <item>GYM - BODY BUILDING</item>
+        <item>BARBAR SHOP</item>
+        <item>HARDWARE STORE</item>
+        <item>HEALTH</item>
+        <item>HINDU TEMPLE</item>
+        <item>HOME GOODS STORE</item>
+        <item>HOSPITAL</item>
+        <item>INSURANCE AGENCY</item>
+        <item>JEWELLERY STORE</item>
+        <item>LAUNDRY</item>
+        <item>LAWYER</item>
+        <item>LIBRARY</item>
+        <item>LIQUOR AND WINE SHOP</item>
+        <item>LOCAL GOVERNMENT OFFICE</item>
+        <item>LOCKSMITH</item>
+        <item>LODGING</item>
+        <item>MEAL DELIVERY</item>
+        <item>MEAL TAKEAWAY</item>
+        <item>MOSQUE</item>
+        <item>MOVIE RENTAL</item>
+        <item>MOVIE THEATRE</item>
+        <item>MOVING COMPANY</item>
+        <item>MUSEUM</item>
+        <item>NIGHT CLUB</item>
+        <item>PAINTER</item>
+        <item>PARK</item>
+        <item>PARKING</item>
+        <item>PET STORE</item>
+        <item>MEDICAL STORES</item>
+        <item>PHYSCHOTHERAPIST</item>
+        <item>PLACE OF WORSHIP</item>
+        <item>PLUMBER</item>
+        <item>POLICE</item>
+        <item>POST OFFICE</item>
+        <item>REAL STATE AGENCY</item>
+        <item>RESTAURANT</item>
+        <item>ROOFING CONTRACTOR</item>
+        <item>RV PARK</item>
+        <item>SCHOOL</item>
+        <item>SHOE STORE</item>
+        <item>SHOPPING MALL</item>
+        <item>SPA</item>
+        <item>STADIUM</item>
+        <item>STORAGE</item>
+        <item>STORE</item>
+        <item>SUBWAY STATION</item>
+        <item>SYNAGOUGE</item>
+        <item>TAXI STAND</item>
+        <item>TRAIN STATION</item>
+        <item>TRAVEL AGENCY</item>
+        <item>UNIVERSITY</item>
+        <item>VETERINARY CARE</item>
+        <item>ZOO</item>
+    </array>
+</resources>

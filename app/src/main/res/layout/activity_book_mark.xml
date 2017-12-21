@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorTransparentBackground">
+
+
+    <ImageButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/cancel_selector" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_cancel"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp">
+
+        <RelativeLayout
+            android:id="@+id/layt1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/bookmar_save"
+                android:textColor="@color/white"
+                android:textSize="22dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layt3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/layt1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textbar">
+
+            <EditText
+                android:id="@+id/edt_froms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:background="@color/colorTransparent"
+                android:hint="@string/city_place"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="@color/colorHint"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layt4"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/layt3"
+            android:layout_marginTop="15dp">
+
+            <ImageButton
+                android:id="@+id/save_btn"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/save_selector" />
+        </RelativeLayout>
+
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_below="@+id/layt4"
+            android:layout_marginTop="10dp"
+            android:scrollbarThumbVertical="@android:color/transparent"></ListView>
+
+
+        <RelativeLayout
+            android:id="@+id/cancel_layt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_view">
+
+            <ImageButton
+                android:id="@+id/clear_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/cancel2_selector" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/cancel_layt"
+            android:layout_marginTop="5dp">
+
+            <ImageButton
+                android:id="@+id/delete_btn"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/delete_drawable_se" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

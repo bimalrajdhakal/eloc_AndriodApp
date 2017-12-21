@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<group android:id="@+id/nav_view">-->
+    <!--<item-->
+    <!--android:id="@+id/nav_service"-->
+    <!--android:icon="@mipmap/ic_launcher"-->
+    <!--android:title="@string/service" />-->
+
+    <!--</group>-->
+    <group android:id="@+id/nav_view1">
+        <item
+            android:id="@+id/nav_navigator"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/navigator" />
+    </group>
+    <group android:id="@+id/nav_view2">
+        <item
+            android:id="@+id/nav_address"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/address" />
+    </group>
+    <group android:id="@+id/nav_view3">
+        <item
+            android:id="@+id/nav_location"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/location" />
+    </group>
+
+    <group android:id="@+id/nav_view4">
+        <item
+            android:id="@+id/nav_Bookmark"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/Bookmark" />
+    </group>
+    <group android:id="@+id/nav_view5">
+        <item
+            android:id="@+id/nav_Settings"
+            android:icon="@mipmap/ic_launcher"
+            android:title="@string/Settings" />
+    </group>
+</menu>
+
+
+

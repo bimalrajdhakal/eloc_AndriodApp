@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rootLayt"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="50dp">
+
+        <ImageButton
+            android:id="@+id/rootLayt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/location_tracking_selector"></ImageButton>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relayLaytLocTrackTime"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@+id/rootLayt"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:visibility="gone">
+
+        <include layout="@layout/time_radio_layout"></include>
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/rootLayt2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/relayLaytLocTrackTime"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/type_of_map_selector"></ImageButton>
+
+    <RelativeLayout
+        android:id="@+id/reltLayt_typeOfMap"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@+id/rootLayt2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:visibility="gone">
+
+        <include layout="@layout/view_radio_layout"></include>
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/rootLayt3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/reltLayt_typeOfMap"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/remove_location_selector"></ImageButton>
+
+    <RelativeLayout
+        android:id="@+id/relyLayt_removeLoc"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@+id/rootLayt3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:visibility="gone">
+
+        <include layout="@layout/remove_location_layout"></include>
+    </RelativeLayout>
+</RelativeLayout>

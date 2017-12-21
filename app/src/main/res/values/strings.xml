@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">RouteFinder</string>
+    <string name="google_api">AIzaSyBsXHdo_XfL8WKDjPsl-JDKJqSvy4hKM6o</string>
+
+    <string name="no_internet_connection">Please check your internet connection.</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="service">Service (on/off)</string>
+    <string name="navigator">Navigator</string>
+    <string name="address">Address</string>
+    <string name="location">Location History</string>
+    <string name="reemoveLocationHistory">Remove Location History</string>
+    <string name="Bookmark">BookMark</string>
+    <string name="Settings">Settings</string>
+    <string name="locationtrackingtime">Location Tracking Time Interval</string>
+    <string name="typeofMap">Type Of Map</string>
+    <string name="currentLocation">Current Location</string>
+    <string name="search_here">Search Here</string>
+    <string name="nearBy">Near By</string>
+
+
+    <string name="city_place">City/Place</string>
+
+    <string name="bookmar_save">Enter Address to Bookmark</string>
+    <string name="from">Source</string>
+    <string name="to">Destination</string>
+
+
+    <string-array name="title">
+        <item>@string/service</item>
+        <item>@string/navigator</item>
+        <item>@string/address</item>
+        <item>@string/service</item>
+        <item>@string/navigator</item>
+        <item>@string/address</item>
+        <item>@string/location</item>
+        <item>@string/Bookmark</item>
+        <item>@string/Settings</item>
+        <item>@string/nearBy</item>
+    </string-array>
+
+
+    <string-array name="proximity_radius">
+        <item>10 Km</item>
+        <item>15 Km</item>
+        <item>25 Km</item>
+        <item>35 Km</item>
+        <item>45 Km</item>
+        <item>50 Km</item>
+
+    </string-array>
+
+
+    <string name="tenMinutes">10 Minutes</string>
+    <string name="fifteenMinutes">15 Minutes</string>
+    <string name="twentyMinutes">20 Minutes</string>
+    <string name="thirtyMinutes">30 Minutes</string>
+    <string name="oneHour">1 Hour</string>
+
+    <string-array name="radioTime">
+        <item>@string/tenMinutes</item>
+        <item>@string/fifteenMinutes</item>
+        <item>@string/twentyMinutes</item>
+        <item>@string/thirtyMinutes</item>
+        <item>@string/oneHour</item>
+    </string-array>
+
+    <string name="normal">Normal</string>
+    <string name="hybrid">Hybrid</string>
+    <string name="satellite">Satellite</string>
+    <string name="terrain">Terrain</string>
+
+    <string name="near_places">Near By Places</string>
+
+
+    <string name="spinner_title">Range Near places</string>
+
+
+    <string name="clear_listy">DO you want to clear the list ?</string>
+
+</resources>

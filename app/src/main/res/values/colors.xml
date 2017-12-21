@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3CB468</color>
+    <color name="colorPrimaryDark">#44a668</color>
+    <color name="colorAccent">#3CB468</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="background">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="color_menu_item">#215c88</color>
+    <color name="colorDivider">#bab4b4</color>
+    <color name="colorStepViewLine">#5167b6</color>
+    <color name="colorText">#3CB468</color>
+    <color name="colorTransparentBackground">#96000000</color>
+    <color name="colorHint">#BBBAB0</color>
+
+    <color name="colorBackground">#7d55e7</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorbg">#c7c7c7</color>
+    <color name="colorbgLight">#cccccc</color>
+    <color name="colorstep">#666666</color>
+
+</resources>

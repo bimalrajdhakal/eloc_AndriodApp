@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/relyt_background"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+
+        <ImageView
+            android:id="@+id/iv_background"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/textbar" />
+
+
+        <TextView
+            android:id="@+id/tv_addLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/btn_check"
+            android:text="Noida to faridabad"
+            android:textSize="17dp" />
+
+
+        <ImageButton
+            android:id="@+id/btn_check"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/checkbx_white" />
+    </RelativeLayout>
+
+</RelativeLayout>
