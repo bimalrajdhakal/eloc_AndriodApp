@@ -1,33 +1,52 @@
 package com.nexogen.routefinder.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.nexogen.routefinder.R;
+import com.nexogen.routefinder.adapter.ListAdapters;
+import com.nexogen.routefinder.databases.AppDatabase;
+import com.nexogen.routefinder.databases.NavigatorTable;
+import com.nexogen.routefinder.utils.CustomToast_nearby;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static com.nexogen.routefinder.activity.MainActivity.toolbar_title;
 import static com.nexogen.routefinder.fragments.MapLoadingFragment.MAP_TYPE_NORMAL;
+import static com.nexogen.routefinder.intefaces.TagName.deleteLocationHistory;
+import static com.nexogen.routefinder.intefaces.TagName.locationHistorynotAvailable;
 
-/**
- * Created by nexogen on 11/12/17.
- */
+
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
     public static boolean radios6, radios7, radios8, radios9;
     private View view;
     private boolean locFlag = false, remFlag = false, typeFlag = false;
-    private RadioButton radio1, radio2, radio3, radio4, radio5, radio6, radio7, radio8, radio9;
+    private RadioButton radio6, radio7, radio8, radio9;
     private ImageButton locationTrackTime, typeOfMap, removeLocHistory;
     private RelativeLayout relytLaytlocationTrackTime, relytLayttypeOfMap, relytLaytremoveLoc;
     private ImageButton btnCancel, btnDelete;
+    private ListView listView;
+    private ListAdapters listAdapters;
+    private List<String> listData;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
 
     @Nullable
     @Override
@@ -44,35 +63,17 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         init();
 
 
+        toolbar_title.setText(getResources().getString(R.string.Settings));
+
         radioButton(radios6, radios7, radios8, radios9);
 
         radioGroup();
+
     }
 
     private void radioGroup() {
 
-        final RadioGroup radioGroup = view.findViewById(R.id.radio_container);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // TODO Auto-generated method stub
-                switch (checkedId) {
-                    case R.id.radio1:
-                        Toast.makeText(getActivity(), "radio1", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.radio2:
-                        break;
-                    case R.id.radio3:
-                        break;
-                    case R.id.radio4:
-                        break;
-                    case R.id.radio5:
-                        break;
-
-                }
-            }
-        });
         RadioGroup radioGroups = view.findViewById(R.id.radio_container2);
         radioGroups.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
@@ -151,12 +152,55 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     }
 
     private void init() {
+        sharedPreferences = getActivity().getSharedPreferences("common", Context.MODE_PRIVATE);
+        editor= sharedPreferences.edit();
 
-        radio1 = view.findViewById(R.id.radio1);
-        radio2 = view.findViewById(R.id.radio2);
-        radio3 = view.findViewById(R.id.radio3);
-        radio4 = view.findViewById(R.id.radio4);
-        radio5 = view.findViewById(R.id.radio5);
+
+        listData=new ArrayList<>();
+
+        String [] data=getActivity().getResources().getStringArray(R.array.radioTime);
+
+        listData= Arrays.asList(data);
+
+        listView =view. findViewById(R.id.list_view);
+
+        listAdapters = new ListAdapters(getActivity(), listData);
+
+        listView.setAdapter(listAdapters);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                editor.putInt("position",position);
+
+                switch (position){
+                    case 0:
+                        editor.putInt("time",10);
+                        break;
+                    case 1:
+                        editor.putInt("time",15);
+                        break;
+                    case 2:
+                        editor.putInt("time",20);
+                        break;
+                    case 3:
+                        editor.putInt("time",30);
+                        break;
+                    case 4:
+                        editor.putInt("time",60);
+                        break;
+
+                }
+                editor.commit();
+                listAdapters.setCurrentSelection(position);
+                listAdapters.notifyDataSetChanged();
+
+            }
+        });
+
+
+
+
         radio6 = view.findViewById(R.id.radio6);
         radio7 = view.findViewById(R.id.radio7);
         radio8 = view.findViewById(R.id.radio8);
@@ -203,7 +247,19 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.btn_delete:
-                Toast.makeText(getActivity(), "btnDelete", Toast.LENGTH_SHORT).show();
+                AppDatabase appDatabase = AppDatabase.getDatabase(getActivity());
+                List<NavigatorTable> updatedData = appDatabase.navigatorDao().getAllUser();
+
+
+                if (updatedData.size() > 0) {
+                    CustomToast_nearby.Show(getActivity(), deleteLocationHistory, true);
+                    appDatabase.navigatorDao().removeAllUsers();
+
+                } else {
+                    CustomToast_nearby.Show(getActivity(), locationHistorynotAvailable, false);
+
+                }
+
                 break;
         }
     }

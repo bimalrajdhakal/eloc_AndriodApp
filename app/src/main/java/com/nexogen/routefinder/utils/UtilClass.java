@@ -8,7 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 
-import com.nexogen.routefinder.AppLocationService;
+import com.nexogen.routefinder.Modules.AppLocationService;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +28,6 @@ public class UtilClass {
         if (locations == null) {
             locations = appLocationService.getLocation(LocationManager.NETWORK_PROVIDER);
         }
-
         if (locations != null || !locations.equals("")) {
             Geocoder geocoder = new Geocoder(mContext);
             try {
@@ -46,7 +45,6 @@ public class UtilClass {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
         }
         return position;
     }

@@ -31,4 +31,7 @@ public interface BookMarkDao {
 
     @Query("delete from BookMarkTable")
     void removeAllUsers();
+
+    @Query("DELETE FROM " + "BookMarkTable" + " WHERE " + "id" + " = :id")
+    int deleteById(long id);
 }

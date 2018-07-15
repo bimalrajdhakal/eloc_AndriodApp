@@ -35,24 +35,12 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:text="Allahabad bank limited"
+                android:textAllCaps="true"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:textColor="#000000"
                 android:textSize="15dp" />
 
-
-            <TextView
-                android:id="@+id/tv_secondTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_bankName"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:text="Allahabad bank limited"
-                android:textColor="#000000"
-                android:textSize="15dp"
-                android:visibility="gone" />
 
 
         </RelativeLayout>

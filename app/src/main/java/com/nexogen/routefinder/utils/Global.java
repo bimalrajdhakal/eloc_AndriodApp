@@ -13,6 +13,7 @@ import java.util.Calendar;
 
 public class Global {
 
+
     public static int[] placesImages = new int[]{R.drawable.icon_1_accounting, R.drawable.icon_2_airport, R.drawable.icon_3_amusementpark, R.drawable.icon_4_aquarium, R.drawable.icon_5_artgallery, R.drawable.icon_6_atm, R.drawable.icon_7_backery, R.drawable.icon_8_bank, R.drawable.icon_9_bar, R.drawable.icon_10_beauti_salloon, R.drawable.icon_11_bicycle, R.drawable.icon_12_book_store, R.drawable.icon_13_bowling_alley, R.drawable.icon_14_bus_stand, R.drawable.icon_15_cafe, R.drawable.icon_16_campground, R.drawable.icon_17_car_dealar, R.drawable.icon_18_car_rental, R.drawable.icon_19_car_repair, R.drawable.icon_20_car_wash, R.drawable.icon_21_casino,
             R.drawable.icon_22_cemetery, R.drawable.icon_23_church, R.drawable.icon_24_city_hall, R.drawable.icon_25_clothing_store, R.drawable.icon_26_convience_store, R.drawable.icon_27_court_house, R.drawable.icon_28_dentist, R.drawable.icon_29_department_store, R.drawable.icon_30_doctor, R.drawable.icon_31_electrician, R.drawable.icon_32_elecronic_store, R.drawable.icon_33_embassy, R.drawable.icon_34_establishment, R.drawable.icon_35_finance, R.drawable.icon_36_fire_station, R.drawable.icon_37_florist,
             R.drawable.icon_38_food, R.drawable.icon_39_funeral_home, R.drawable.icon_40_furniture_store, R.drawable.icon_41_gas_station, R.drawable.icon_42_general_contractor, R.drawable.icon_43_gorocery_or_super_market, R.drawable.icon_44_gym, R.drawable.icon_45_hair_care, R.drawable.icon_46_hardware_store, R.drawable.icon_47_health, R.drawable.icon_48_hindu_temple, R.drawable.icon_49_home_goods_shop, R.drawable.icon_50_hospital, R.drawable.icon_51_insurance_agency, R.drawable.icon_52_jewelry, R.drawable.icon_53_laundry, R.drawable.icon_54_lawyer, R.drawable.icon_55_library, R.drawable.icon_56_liquor_store, R.drawable.icon_57_local_goverment_office,
@@ -23,8 +24,6 @@ public class Global {
         Calendar calander = Calendar.getInstance();
         SimpleDateFormat simpledateformat = new SimpleDateFormat("dd-MM-yyyy \n hh:mm a");
         String Date = simpledateformat.format(calander.getTime());
-
-        Log.d("date", Date);
         return Date;
     }
 

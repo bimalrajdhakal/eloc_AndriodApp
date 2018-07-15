@@ -37,34 +37,4 @@ public class ConnectivityUtils {
         return status;
     }
 
-    public static boolean isNetworkConnected(Context mContext) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        /*NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo mobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        NetworkInfo bluetooth = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_BLUETOOTH);
-        NetworkInfo wimax = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIMAX);*/
-        return activeNetwork != null && activeNetwork.isAvailable();
-        /*if (wifi == null && mobile == null && bluetooth == null && wimax == null) {
-            return false;
-        }
-
-        if (wifi != null && wifi.isConnected()) {
-            return true;
-        }
-
-        if (mobile != null && mobile.isConnected()) {
-            return true;
-        }
-
-        if (bluetooth != null && bluetooth.isConnected()) {
-            return true;
-        }
-
-        if (wimax != null && wimax.isConnected()) {
-            return true;
-        }
-
-        return false;*/
-    }
 }

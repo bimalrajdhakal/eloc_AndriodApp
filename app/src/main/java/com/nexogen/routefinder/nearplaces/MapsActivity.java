@@ -1,24 +1,21 @@
 package com.nexogen.routefinder.nearplaces;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,90 +31,64 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexogen.routefinder.R;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.nexogen.routefinder.intefaces.TagName;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, AdapterView.OnItemSelectedListener {
+        LocationListener, View.OnClickListener {
 
-
-    public static final int REQUEST_LOCATION_CODE = 99;
-    int PROXIMITY_RADIUS = 10000;
+    public static int positions;
     double latitude, longitude;
     private GoogleMap mMap;
     private GoogleApiClient client;
     private LocationRequest locationRequest;
-    private Location lastlocation;
     private Marker currentLocationmMarker;
-    private ArrayList<String> categories;
+    private SharedPreferences sharedPreferences;
+    private ProgressDialog progressDialog;
+    private String placesName;
+    private Button B_back;
+    private TextView tv_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkLocationPermission();
+        init();
 
-        }
+        progressDialogs();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.maps);
         mapFragment.getMapAsync(this);
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+    }
 
-        // Spinner click listener
-        spinner.setOnItemSelectedListener(this);
-
-        // Spinner Drop down elements
-        categories = new ArrayList<>();
-        String[] range = getResources().getStringArray(R.array.proximity_radius);
-
-
-        // Creating adapter for spinner
-        ArrayAdapter dataAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, range);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        spinner.setAdapter(dataAdapter);
-
+    private void progressDialogs() {
+        progressDialog = ProgressDialog.show(this, "",
+                "Searching Nearest " + placesName + TagName.nearPlaceMessage, true, false);
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_LOCATION_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        if (client == null) {
-                            bulidGoogleApiClient();
-                        }
-                        mMap.setMyLocationEnabled(true);
-                    }
-                } else {
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show();
-                }
-        }
+    private void init() {
+
+        tv_title = findViewById(R.id.tv_title);
+        sharedPreferences = this.getSharedPreferences("common", Context.MODE_PRIVATE);
+
+        B_back = (Button) findViewById(R.id.B_back);
+        B_back.setOnClickListener(this);
+
+
+        // Intent through get data
+        placesName = getIntent().getStringExtra("places");
+        positions = getIntent().getIntExtra("position", 0);
+        tv_title.setText("Near By "+placesName.toUpperCase().replace("_", " "));
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -126,6 +97,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             bulidGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
+
+
     }
 
 
@@ -141,109 +114,73 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        lastlocation = location;
         if (currentLocationmMarker != null) {
             currentLocationmMarker.remove();
 
         }
-        Log.d("lat = ", "" + latitude);
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
         markerOptions.title("Current Location");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.mark_blue));
         currentLocationmMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
+        mMap.setTrafficEnabled(true);
+        mMap.setBuildingsEnabled(true);
 
 
         if (client != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(client, this);
         }
-    }
-
-    public void onClick(View v) {
-        Object dataTransfer[] = new Object[2];
-        GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-
-        switch (v.getId()) {
-            case R.id.B_search:
-                EditText tf_location = findViewById(R.id.TF_location);
-                String location = tf_location.getText().toString();
-                List<Address> addressList;
-
-
-                if (!location.equals("")) {
-                    Geocoder geocoder = new Geocoder(this);
-
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 5);
-
-                        if (addressList != null) {
-                            for (int i = 0; i < addressList.size(); i++) {
-                                LatLng latLng = new LatLng(addressList.get(i).getLatitude(), addressList.get(i).getLongitude());
-                                MarkerOptions markerOptions = new MarkerOptions();
-                                markerOptions.position(latLng);
-                                markerOptions.title(location);
-                                mMap.addMarker(markerOptions);
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-                            }
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            case R.id.B_hopistals:
-                mMap.clear();
-                String places = /*"hospital"*/getIntent().getStringExtra("places");
-                String url = getUrl(latitude, longitude, places);
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
-
-                getNearbyPlacesData.execute(dataTransfer);
-                String placesName = /*"hospital"*/getIntent().getStringExtra("placesName");
-
-                Toast.makeText(MapsActivity.this, "Showing Nearby " + placesName, Toast.LENGTH_SHORT).show();
-                break;
-
-
-            case R.id.B_schools:
-                mMap.clear();
-                String school = "school";
-                url = getUrl(latitude, longitude, school);
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
-
-                getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Schools", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.B_restaurants:
-                mMap.clear();
-                String resturant = "restuarant";
-                url = getUrl(latitude, longitude, resturant);
-                dataTransfer[0] = mMap;
-                dataTransfer[1] = url;
-
-                getNearbyPlacesData.execute(dataTransfer);
-                Toast.makeText(MapsActivity.this, "Showing Nearby Restaurants", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.B_to:
-        }
+        progressDialog.dismiss();
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Object dataTransfer[] = new Object[2];
+                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData(MapsActivity.this);
+
+
+                mMap.clear();
+                String url = getUrl(latitude, longitude, placesName);
+                dataTransfer[0] = mMap;
+                dataTransfer[1] = url;
+
+                getNearbyPlacesData.execute(dataTransfer);
+
+//                CustomToast_nearby.Show(MapsActivity.this, "Showing Nearby " + placesName, true);
+            }
+        }, 2000);
+
+
+    }
+
+
+    //  get url gson format and change your key
     private String getUrl(double latitude, double longitude, String nearbyPlace) {
-
         StringBuilder googlePlaceUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlaceUrl.append("location=" + latitude + "," + longitude);
-        googlePlaceUrl.append("&radius=" + PROXIMITY_RADIUS);
+        googlePlaceUrl.append("&radius=" + sharedPreferences.getInt("PROXIMITY_RADIUS", 10000));
         googlePlaceUrl.append("&type=" + nearbyPlace);
         googlePlaceUrl.append("&sensor=true");
         googlePlaceUrl.append("&key=" + "AIzaSyBLEPBRfw7sMb73Mr88L91Jqh3tuE4mKsE");
-
-        Log.d("MapsActivity", "url = " + googlePlaceUrl.toString());
 
         return googlePlaceUrl.toString();
     }
@@ -263,21 +200,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    public boolean checkLocationPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_CODE);
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_CODE);
-            }
-            return false;
-
-        } else
-            return true;
-    }
-
-
     @Override
     public void onConnectionSuspended(int i) {
     }
@@ -286,42 +208,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
 
+
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-        String item = adapterView.getItemAtPosition(position).toString();
+    public void onClick(View view) {
 
-        // Showing selected spinner item
-        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-        switch (position) {
-            case 0:
-                PROXIMITY_RADIUS = 10000;
+        switch (view.getId()) {
+            case R.id.B_back:
+                call();
                 break;
-            case 1:
-                PROXIMITY_RADIUS = 15000;
-                break;
-            case 2:
-                PROXIMITY_RADIUS = 25000;
-                break;
-            case 3:
-                PROXIMITY_RADIUS = 35000;
-                break;
-            case 4:
-                PROXIMITY_RADIUS = 40000;
-                break;
-            case 5:
-                PROXIMITY_RADIUS = 50000;
-                break;
-         /*   default:
-                PROXIMITY_RADIUS = 10000;
-                break;*/
-
         }
-
 
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    private void call() {
+        finish();
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mMap.clear();
     }
 }

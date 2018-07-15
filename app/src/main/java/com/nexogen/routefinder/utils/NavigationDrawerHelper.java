@@ -12,19 +12,30 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.nexogen.routefinder.R;
+import com.nexogen.routefinder.adapter.DrawerItemCustomAdapter;
+import com.nexogen.routefinder.model.ObjectDrawerItem;
 
-/**
- * Created by Andy on 10-Dec-14.
- */
 public class NavigationDrawerHelper {
 
     DrawerLayout mDrawerLayout;
     ListView mDrawerListView;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    private int[] navigatioIcon = {R.drawable.homepress, R.drawable.like, R.drawable.homepress,
-            R.drawable.like, R.drawable.homepress, R.drawable.like, R.drawable.like,
-            R.drawable.homepress, R.drawable.like, R.drawable.like};
+    private int[] navigatioIcon = { R.drawable.address, //1
+                                    R.drawable.bookmarks, //2
+                                    R.drawable.locationhistory, //3
+                                    R.drawable.navigator, //4
+                                    R.drawable.current_locations1, //5
+                                    R.drawable.navigator, //6
+                                    R.drawable.nearby, //7
+                                    R.drawable.address, //8
+                                    R.drawable.locationhistory, //9
+                                    R.drawable.bookmarks, //10
+                                    R.drawable.eloc, //11
+                                    R.drawable.qr, //12
+                                    R.drawable.search_eloc, //13
+                                    R.drawable.settings     //14
+                                };
 
 
     public void init(Activity activity, ListView.OnItemClickListener listener) {
@@ -37,7 +48,7 @@ public class NavigationDrawerHelper {
         String[] title = activity.getResources().getStringArray(R.array.title);
 
         // List the Drawer Items
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[10];
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[14];
 
         for (int count = 0; count < title.length; count++) {
             drawerItem[count] = new ObjectDrawerItem(navigatioIcon[count], title[count]);

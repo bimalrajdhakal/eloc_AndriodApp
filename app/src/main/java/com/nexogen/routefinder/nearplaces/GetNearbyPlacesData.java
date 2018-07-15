@@ -1,13 +1,15 @@
 package com.nexogen.routefinder.nearplaces;
 
+import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.nexogen.routefinder.adapter.MyInfoWindowAdapter;
+import com.nexogen.routefinder.utils.CustomMarkerImage;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,6 +21,16 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
     String url;
     private String googlePlacesData;
     private GoogleMap mMap;
+    private Context mContext;
+
+    public GetNearbyPlacesData() {
+
+    }
+
+    public GetNearbyPlacesData(MapsActivity mapsActivity) {
+        this.mContext = mapsActivity;
+
+    }
 
     @Override
     protected String doInBackground(Object... objects) {
@@ -41,7 +53,6 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
         List<HashMap<String, String>> nearbyPlaceList;
         DataParser parser = new DataParser();
         nearbyPlaceList = parser.parse(s);
-        Log.d("nearbyplacesdata", "called parse method");
         showNearbyPlaces(nearbyPlaceList);
     }
 
@@ -58,11 +69,15 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
             LatLng latLng = new LatLng(lat, lng);
             markerOptions.position(latLng);
             markerOptions.title(placeName + " : " + vicinity);
-            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(CustomMarkerImage.getMarkerIcon(mContext, MapsActivity.positions)));
 
             mMap.addMarker(markerOptions);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+
+            mMap.setInfoWindowAdapter(new MyInfoWindowAdapter(mContext, placeName));
         }
     }
+
+
 }

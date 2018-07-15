@@ -1,27 +1,7 @@
 <RelativeLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <EditText
-        android:id="@+id/TF_location"
-        android:layout_width="290dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/B_search"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:onClick="onClick"
-        android:text="Search"
-        android:visibility="gone" />
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,90 +18,31 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
 
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:text="vgjhghgfhftkgghghghgfyfutyfdtdtudtdttuuu"
+            android:textSize="18dp"
+            android:layout_marginLeft="150dp"
+
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/B_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorPrimary"
-            android:onClick="onClick"
-            android:text="Back"
-            android:textColor="@color/white"
-            android:visibility="visible" />
-
-        <Button
-            android:id="@+id/B_hopistals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorPrimary"
-            android:onClick="onClick"
-            android:text="show"
-            android:textColor="@color/white"
-            android:visibility="visible" />
-
-        <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:text="@string/near_places"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:textSize="17dp" />-->
-
-        <RelativeLayout
-            android:layout_width="100dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerInParent="true">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            android:textColor="@color/white"
+            android:visibility="visible" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginBottom="5dp"
-                android:text="Category:"
-                android:visibility="gone" />
 
-            <!-- Spinner Element -->
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:drawSelectorOnTop="true"
-                android:hint="@string/spinner_title"
-                android:overlapAnchor="false"
-                android:prompt="@string/spinner_title" />
-        </RelativeLayout>
+
     </RelativeLayout>
-
-
-    <Button
-        android:id="@+id/B_schools"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TF_location"
-        android:onClick="onClick"
-        android:text="Schools"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/B_restaurants"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TF_location"
-        android:onClick="onClick"
-        android:text="Restautants"
-        android:visibility="gone" />
-
-    <Button
-        android:id="@+id/B_to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/B_restaurants"
-        android:onClick="onClick"
-        android:text="To"
-        android:visibility="gone" />
-
 
 </RelativeLayout>

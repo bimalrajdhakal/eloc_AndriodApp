@@ -21,7 +21,6 @@ public class DataParser {
         String longitude = "";
         String reference = "";
 
-        Log.d("DataParser", "jsonobject =" + googlePlaceJson.toString());
 
 
         try {
@@ -71,7 +70,6 @@ public class DataParser {
         JSONArray jsonArray = null;
         JSONObject jsonObject;
 
-        Log.d("json data", jsonData);
 
         try {
             jsonObject = new JSONObject(jsonData);

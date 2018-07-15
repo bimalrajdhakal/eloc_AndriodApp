@@ -1,8 +1,6 @@
 package com.nexogen.routefinder.intefaces;
 
 
-import android.graphics.Color;
-
 public interface TagName {
 
     String GPS_SETTINGS = "GPS SETTINGS";
@@ -13,13 +11,27 @@ public interface TagName {
     String Settings = "Settings";
 
     String HomeFragment = "HomeFragment";
-    String connected = "Good! Connected to Internet";
     String notConnected = "Sorry! Not connected to internet";
 
 
-    int connectedColor = Color.YELLOW;
-    int notConnectedColor = Color.RED;
-
-
     String fromAndTo = "please enter  source to destination";
+    String addedData = "Added successfully new entry";
+
+    String delteSuccsessfully = "deleted successfully";
+
+
+    String DESTINATION = "Please enter destination address!";
+
+    String deleteLocationHistory = "Delete All Location History";
+
+    String locationHistorynotAvailable = "Location history not available";
+
+
+    String nearPlaceMessage = ", Please wait... \n\nSearching speed depends on your Internet connection speed.";
+
+
+    String serviceOn="service on";
+
+    String serviceOff="service off";
+
 }

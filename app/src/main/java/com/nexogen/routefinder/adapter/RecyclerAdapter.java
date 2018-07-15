@@ -10,17 +10,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nexogen.routefinder.R;
+import com.nexogen.routefinder.model.placesNamesModel;
 import com.nexogen.routefinder.utils.Global;
+
+import java.util.AbstractCollection;
+import java.util.List;
 
 
 public class RecyclerAdapter extends BaseAdapter {
 
-    String[] placeTypeNames, placesNames;
     private Context mContext;
-
-    public RecyclerAdapter(FragmentActivity activity, String[] placeTypeName, String[] placesName) {
+    List<placesNamesModel> placesNames;
+    public RecyclerAdapter(FragmentActivity activity , List<placesNamesModel> placesName) {
         this.mContext = activity;
-        this.placeTypeNames = placeTypeName;
         this.placesNames = placesName;
 
 
@@ -29,7 +31,7 @@ public class RecyclerAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return placesNames.length;
+        return placesNames.size();
     }
 
     @Override
@@ -64,11 +66,9 @@ public class RecyclerAdapter extends BaseAdapter {
 
         }
 
-        /////GLide library for image downloading
+        viewHolde.tvPlaceName.setText(placesNames.get(posistion).getPlaceName().toUpperCase().replace("_"," "));
 
-        viewHolde.tvPlaceName.setText(placeTypeNames[posistion]);
-
-        viewHolde.imageView.setBackgroundResource(Global.placesImages[posistion]);
+        viewHolde.imageView.setBackgroundResource(Global.placesImages[placesNames.get(posistion).getId()]);
 
         return view;
     }

@@ -3,7 +3,6 @@ package com.nexogen.routefinder.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,32 +11,39 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.nexogen.routefinder.MultipleSelection.NavigatorModel;
+import com.nexogen.routefinder.ChekNetwork.CheckNetworkConnection;
+import com.nexogen.routefinder.model.NavigatorModel;
 import com.nexogen.routefinder.R;
-import com.nexogen.routefinder.adapter.NavigatorAdapter;
+import com.nexogen.routefinder.adapter.LocationHistoryAdapter;
 import com.nexogen.routefinder.databases.AppDatabase;
 import com.nexogen.routefinder.databases.NavigatorTable;
+import com.nexogen.routefinder.intefaces.TagName;
 import com.nexogen.routefinder.utils.UtilClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by nexogen on 8/12/17.
- */
+import static com.nexogen.routefinder.adapter.LocationHistoryAdapter.navList;
+import static com.nexogen.routefinder.intefaces.TagName.delteSuccsessfully;
+
+
 
 public class LocationHistoryListFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
 
 
-    UtilClass utilClass;
+    private UtilClass utilClass;
     private View view;
     private AppDatabase appDatabase;
     private List<NavigatorTable> navigatorTables;
     private ListView listView;
     private ImageButton btnCancel;
     private ImageButton btnDelete;
-    private List<NavigatorModel> navigatorModels;
+    private List<NavigatorModel> navigatorModels, deleteNavigatorModels;
+    private List<NavigatorTable> updatedData;
+    private double[] dataSource = {0, 0};
+    private double[] dataDestination = {0, 0};
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,24 +62,30 @@ public class LocationHistoryListFragment extends Fragment implements AdapterView
         super.onViewCreated(view, savedInstanceState);
 
 
-        navigatorModels = new ArrayList<>();
         init();
+        objectIntialize();
+        adapters();
+
+
+    }
+
+    private void objectIntialize() {
+        navigatorModels = new ArrayList<>();
+        deleteNavigatorModels = new ArrayList<>();
         utilClass = new UtilClass();
-
-
         appDatabase = AppDatabase.getDatabase(getActivity());
-
         navigatorTables = appDatabase.navigatorDao().getAllUser();
 
+    }
 
+    private void adapters() {
         for (int count = 0; count < navigatorTables.size(); count++) {
-            navigatorModels.add(new NavigatorModel(count, navigatorTables.get(count).getSource(), navigatorTables.get(count).getDestination(), navigatorTables.get(count).getDateTime()));
+            navigatorModels.add(new NavigatorModel(navigatorTables.get(count).getId(), navigatorTables.get(count).getSource(), navigatorTables.get(count).getDestination(), navigatorTables.get(count).getDateTime()));
         }
+        LocationHistoryAdapter locationHistoryAdapter = new LocationHistoryAdapter(getActivity(), navigatorModels);
+        listView.setAdapter(locationHistoryAdapter);
+        locationHistoryAdapter.notifyDataSetChanged();
 
-
-        listView.setAdapter(new NavigatorAdapter(getActivity(), navigatorModels));
-
-        Log.w("check", navigatorTables.toString());
 
     }
 
@@ -81,7 +93,6 @@ public class LocationHistoryListFragment extends Fragment implements AdapterView
         listView = (ListView) view.findViewById(R.id.list_view);
 
         listView.setOnItemClickListener(this);
-
         btnCancel = (ImageButton) view.findViewById(R.id.btn_cancel);
         btnDelete = (ImageButton) view.findViewById(R.id.delete_btn);
 
@@ -92,32 +103,69 @@ public class LocationHistoryListFragment extends Fragment implements AdapterView
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
         TextView tv_source = (TextView) view.getTag(R.id.tv_source);
+        TextView tv_source1 = (TextView) view.getTag(R.id.tv_source1);
         TextView tv_destination = (TextView) view.getTag(R.id.tv_destination);
         CheckBox checkbox = (CheckBox) view.getTag(R.id.check);
 
-        String source = tv_source.getText().toString();
+        String tv_sources = tv_source1.getText().toString();
         String destination = tv_destination.getText().toString();
 
 
-        Log.w("check", source + "-" + destination);
+        if (CheckNetworkConnection.isConnectionAvailable(getActivity())) {
+            dataSource = utilClass.getAddressName(tv_sources, getActivity());
+            dataDestination = utilClass.getAddressName(destination, getActivity());
 
-//        utilClass.openGoogleMap(getActivity(), MainActivity.latLongModel.get(0).latitude, MainActivity.latLongModel.get(0).longitude
-//                , data[0], data[1]);
+            utilClass.openGoogleMap(getActivity(), dataSource[0], dataSource[1]
+                    , dataDestination[0], dataDestination[1]);
+        } else {
+            Toast.makeText(getActivity(), TagName.notConnected, Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()) {
             case R.id.delete_btn:
+                delteTable(false);
                 break;
-
             case R.id.btn_cancel:
+                delteTable(true);
                 break;
         }
+
+
+    }
+
+    private void delteTable(boolean b) {
+
+        deleteNavigatorModels.clear();
+        for (int count = 0; count < navList.size(); count++) {
+            if (navList.get(count).isSelected() == true) {
+                deleteNavigatorModels.add(navList.get(count));
+            }
+        }
+
+
+        if (b == false) {
+            for (int counts = 0; counts < deleteNavigatorModels.size(); counts++) {
+                appDatabase.navigatorDao().deleteById(deleteNavigatorModels.get(counts).getId());
+            }
+            Toast.makeText(getActivity(), delteSuccsessfully, Toast.LENGTH_SHORT).show();
+
+        }
+
+        updatedData = appDatabase.navigatorDao().getAllUser();
+        navigatorModels.clear();
+        for (int count = 0; count < updatedData.size(); count++) {
+            navigatorModels.add(new NavigatorModel(updatedData.get(count).getId(), updatedData.get(count).getSource(), updatedData.get(count).getDestination(), updatedData.get(count).getDateTime()));
+        }
+        LocationHistoryAdapter locationHistoryAdapter = new LocationHistoryAdapter(getActivity(), navigatorModels);
+        listView.setAdapter(locationHistoryAdapter);
+        locationHistoryAdapter.notifyDataSetChanged();
 
 
     }

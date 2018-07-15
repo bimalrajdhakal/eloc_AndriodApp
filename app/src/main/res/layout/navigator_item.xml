@@ -8,13 +8,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
 
-        <ImageButton
+        <RelativeLayout
             android:id="@+id/image_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="13dp"
+            android:layout_height="22dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/location_icon" />
+            android:layout_marginTop="2dp"
+            android:background="@drawable/location_icon"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
 
         <TextView
             android:id="@+id/tv_date"
@@ -30,10 +32,24 @@
             android:id="@+id/tv_source"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/check"
             android:layout_toRightOf="@+id/tv_date"
             android:padding="5dp"
-            android:text="F-58 ,"
+            android:text="F-58 rwrrqrqwrqwrqrrq ,"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
+        <TextView
+            android:id="@+id/tv_source1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/check"
+            android:layout_toRightOf="@+id/tv_date"
+            android:padding="5dp"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:textSize="15dp" />
 
@@ -41,11 +57,13 @@
             android:id="@+id/tv_destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/check"
             android:layout_toRightOf="@+id/tv_source"
             android:padding="5dp"
             android:text="sy zinger hotel"
             android:textColor="@color/black"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:visibility="gone" />
 
         <CheckBox
             android:id="@+id/check"
@@ -53,8 +71,6 @@
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginLeft="4dip"
-            android:layout_marginRight="10dip"
             android:focusable="false"
             android:focusableInTouchMode="false"></CheckBox>
 

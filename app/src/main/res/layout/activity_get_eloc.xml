@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nexogen.routefinder.activity.UserRegister">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/showcase"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="80dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp">
+
+                <!-- Radio Button for Resident and Non-Resident -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+                    <RadioGroup
+                        android:id="@+id/resident_type"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/resident"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginRight="30dp"
+                            android:text="Resident"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:id="@+id/non_resident"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="Non-Resident" />
+
+
+                    </RadioGroup>
+
+                </RelativeLayout>
+
+
+                <!-- House/Flat/Door No -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textbar">
+
+                    <EditText
+                        android:id="@+id/hno"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/hno"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorHint"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <!-- Street/Road/Lane -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textbar">
+
+                    <EditText
+                        android:id="@+id/street_road"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/street_road"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorHint"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+
+
+                <!-- Landmark -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textbar">
+
+                    <EditText
+                        android:id="@+id/landmark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/landmark"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorHint"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <!-- Area/Locality -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textbar">
+
+                    <EditText
+                        android:id="@+id/area_locality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/area_locality"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorHint"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <!-- Village/Town/City -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textbar">
+
+                    <EditText
+                        android:id="@+id/village_town"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/village_town"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorHint"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+                <!-- Pin Code-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/textbar">
+
+                    <EditText
+                        android:id="@+id/pincode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/pincode"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorHint"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+
+                <!-- Register Button -->
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_geteloc"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/save_selector" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

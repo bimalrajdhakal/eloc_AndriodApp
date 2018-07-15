@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nexogen.routefinder.activity.showQRCocde">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/showcase"
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp">
+
+                <!-- Scan and pick from gallery button   -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp">
+
+                    <!-- Scan Button -->
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btn_scan_qr"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:text="Scan QR Code"
+                        android:background="@color/colorPrimary" />
+                    <!-- pick from gallery Button -->
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btn_pick_qr"
+                        android:layout_width="150dp"
+                        android:layout_height="30dp"
+                        android:layout_alignBaseline="@+id/btn_scan_qr"
+                        android:layout_alignBottom="@+id/btn_scan_qr"
+                        android:layout_alignParentEnd="true"
+                        android:background="@color/colorPrimary"
+                        android:text="Pick from Gallery" />
+
+                </RelativeLayout>
+
+
+                <!-- House/Flat/Door No -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+                    <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:id="@+id/survey_Card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <TextView
+                                android:id="@+id/tv_resident_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_eloc_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_hno"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_street"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_landmark"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_area"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_village_town"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_pincode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_district"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/colorPrimary"
+                                android:layout_margin="1dp"/>
+                            <TextView
+                                android:id="@+id/tv_state"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="5dp"/>
+
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+
+                </RelativeLayout>
+
+                <!-- View -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/layt1"
+                    android:layout_marginTop="5dp">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@android:color/black"
+                        android:id="@+id/view" />
+                </RelativeLayout>
+                <!-- QR Image -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
+                        android:id="@+id/qr_image"/>
+                </RelativeLayout>
+
+
+        <!-- save qr image  Button -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_save_qr"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="150dp"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
+                android:text="Save QR Code"
+                android:layout_centerInParent="true"
+                android:background="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

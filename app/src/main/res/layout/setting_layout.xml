@@ -28,7 +28,24 @@
         android:layout_marginRight="30dp"
         android:visibility="gone">
 
-        <include layout="@layout/time_radio_layout"></include>
+        <!--<include layout="@layout/time_radio_layout"></include>-->
+
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:divider="@null"
+            android:fadeScrollbars="false"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarSize="0dp"
+            android:scrollbarThumbVertical="@android:color/white"
+            android:scrollbars="vertical"
+            android:smoothScrollbar="true">
+
+        </ListView>
+
     </RelativeLayout>
 
     <ImageButton

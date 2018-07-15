@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rly_search"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/job_selector"
+        android:visibility="gone">
+
+
+        <EditText
+            android:id="@+id/edtText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/SerchImage"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="Search..."
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAllCaps="true"
+            android:textSize="15dp" />
+
+
+        <ImageView
+            android:id="@+id/SerchImage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/ic_search_black_24dp" />
+
+        <ImageButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"
+            android:background="@drawable/close_button" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

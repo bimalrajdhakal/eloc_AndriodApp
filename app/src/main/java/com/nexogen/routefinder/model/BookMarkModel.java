@@ -1,8 +1,6 @@
 package com.nexogen.routefinder.model;
 
-/**
- * Created by nexogen on 13/12/17.
- */
+
 
 public class BookMarkModel {
 
